@@ -10,6 +10,12 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // allows JSON body parsing
 
+import columnRoutes from "./routes/columnRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
+
+app.use("/api/columns", columnRoutes);
+app.use("/api/tasks", taskRoutes);
+
 // 1️⃣ Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
